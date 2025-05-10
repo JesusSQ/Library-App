@@ -106,6 +106,29 @@ class Library {
 
 const myLibrary = new Library(bookArray)
 
+// Validations
+
+const title = document.querySelector('#title')
+const author = document.querySelector('#author')
+const pages = document.querySelector('#pages')
+
+const setValidity = function(input, message) {
+    input.addEventListener('invalid', function() {
+        input.setCustomValidity('')
+        if (!input.validity.valid) {
+            input.setCustomValidity(message) // Set error message
+        }
+    })
+
+    input.addEventListener('input', function() {
+        input.setCustomValidity('') // Clean errors
+    })
+}
+
+setValidity(title, 'Please enter a title.')
+setValidity(author, 'Please enter an author.')
+setValidity(pages, 'Please enter the number of pages.')
+
 // Event listeners
 
 createBook.addEventListener('click', () => {
